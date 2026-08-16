@@ -61,3 +61,16 @@ export interface SiteSettings {
   linktree_url: string | null;
   booking_email: string | null;
 }
+
+export interface Enquiry {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
+}
+
+export interface EnquirySettings {
+  id: 1;
+  recipients: string | null;
+}

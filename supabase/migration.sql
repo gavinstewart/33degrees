@@ -60,6 +60,15 @@ create table band_members (
   created_at   timestamptz not null default now()
 );
 
+-- ---------- enquiries (public contact form submissions) ----------
+create table enquiries (
+  id           uuid primary key default gen_random_uuid(),
+  name         text not null,
+  email        text not null,
+  message      text not null,
+  created_at   timestamptz not null default now()
+);
+
 -- ---------- site_settings (singleton, id always 1) ----------
 create table site_settings (
   id               integer primary key default 1,
@@ -76,6 +85,15 @@ create table site_settings (
   constraint site_settings_singleton check (id = 1)
 );
 
+-- ---------- enquiry_settings (singleton, id always 1) ----------
+-- Kept separate from site_settings, which is publicly readable — recipient
+-- addresses must never be exposed via the anon API.
+create table enquiry_settings (
+  id           integer primary key default 1,
+  recipients   text,                    -- comma-separated notification email addresses
+  constraint enquiry_settings_singleton check (id = 1)
+);
+
 -- ============================================================
 -- RLS: anon = SELECT only; authenticated = full CRUD
 -- ============================================================
@@ -85,6 +103,8 @@ alter table merch_items     enable row level security;
 alter table news_posts      enable row level security;
 alter table band_members    enable row level security;
 alter table site_settings   enable row level security;
+alter table enquiries       enable row level security;
+alter table enquiry_settings enable row level security;
 
 create policy "shows_select_anon"       on shows         for select using (true);
 create policy "shows_all_authenticated" on shows         for all    using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
@@ -103,6 +123,14 @@ create policy "band_all_authenticated" on band_members   for all    using (auth.
 
 create policy "settings_select_anon"       on site_settings for select using (true);
 create policy "settings_all_authenticated" on site_settings for all    using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
+
+-- enquiries: anyone can submit (insert), only admins can read/delete — no anon select at all
+create policy "enquiries_insert_anon"       on enquiries for insert with check (true);
+create policy "enquiries_select_authenticated" on enquiries for select using (auth.role() = 'authenticated');
+create policy "enquiries_delete_authenticated" on enquiries for delete using (auth.role() = 'authenticated');
+
+-- enquiry_settings: admin-only, no anon access at all (recipient list is private)
+create policy "enquiry_settings_all_authenticated" on enquiry_settings for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 
 -- ============================================================
 -- Storage: public "media" bucket (for admin-uploaded photos/video going forward)
@@ -145,6 +173,10 @@ values (
   'https://linktr.ee/thirtythreedegreesband',
   null
 )
+on conflict (id) do nothing;
+
+insert into enquiry_settings (id, recipients)
+values (1, null)
 on conflict (id) do nothing;
 
 insert into band_members (name, role, bio, photo_url, sort_order) values

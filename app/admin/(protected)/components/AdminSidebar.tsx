@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/admin/merch", label: "Merch" },
   { href: "/admin/news", label: "News" },
   { href: "/admin/band", label: "Band" },
+  { href: "/admin/enquiries", label: "Enquiries" },
   { href: "/admin/settings", label: "Settings" },
 ];
 

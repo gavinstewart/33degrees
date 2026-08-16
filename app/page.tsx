@@ -5,6 +5,7 @@ import Gallery from "@/app/components/site/Gallery";
 import News from "@/app/components/site/News";
 import Band from "@/app/components/site/Band";
 import Merch from "@/app/components/site/Merch";
+import Enquiry from "@/app/components/site/Enquiry";
 import Footer from "@/app/components/site/Footer";
 import {
   getBandMembers,
@@ -36,6 +37,7 @@ export default async function HomePage() {
       <News posts={news} />
       <Band members={band} />
       <Merch items={merch} />
+      <Enquiry />
       <Footer settings={settings} />
     </>
   );

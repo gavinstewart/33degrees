@@ -10,6 +10,7 @@ const LINKS = [
   { href: "#news", label: "News" },
   { href: "#band", label: "Band" },
   { href: "#merch", label: "Merch" },
+  { href: "#enquiries", label: "Contact" },
 ];
 
 export default function Nav({ settings }: { settings: SiteSettings | null }) {
