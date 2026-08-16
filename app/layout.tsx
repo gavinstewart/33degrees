@@ -19,10 +19,27 @@ const inter = Inter({
   variable: "--font-body",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const description =
+  "Thirty Three Degrees — three-piece rock band from the Central Coast, NSW.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Thirty Three Degrees",
-  description:
-    "Thirty Three Degrees — three-piece rock band from the Central Coast, NSW.",
+  description,
+  openGraph: {
+    title: "Thirty Three Degrees",
+    description,
+    url: siteUrl,
+    siteName: "Thirty Three Degrees",
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thirty Three Degrees",
+    description,
+  },
 };
 
 export default function RootLayout({
