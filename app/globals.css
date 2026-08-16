@@ -88,11 +88,36 @@ img {
 }
 
 .section {
+  position: relative;
   padding: 72px 0;
 }
 
 .section--alt {
   background: var(--color-bg-alt);
+}
+
+/* Etched "33°" watermark — the seed logo tiled faintly across every
+   content section below the Hero. Grayscale + brightened contrast
+   fades the gold sunburst square to near-white so multiply blending
+   makes it disappear into the paper, leaving only a faint impression
+   of the dark ink strokes. Tied to public/seed/logo-33d-lofi.jpg. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/seed/logo-33d-lofi.jpg");
+  background-repeat: repeat;
+  background-size: 300px;
+  filter: grayscale(1) brightness(1.7) contrast(1.4);
+  mix-blend-mode: multiply;
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-heading {
