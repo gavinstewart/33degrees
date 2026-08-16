@@ -31,7 +31,7 @@ export default async function HomePage() {
   return (
     <>
       <Nav settings={settings} />
-      <Hero settings={settings} />
+      <Hero settings={settings} band={band} />
       <Marquee settings={settings} />
       <ShowsList shows={shows} />
       <Gallery items={gallery} />

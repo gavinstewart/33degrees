@@ -1,9 +1,44 @@
 import Image from "next/image";
-import type { SiteSettings } from "@/lib/types";
+import type { BandMember, SiteSettings } from "@/lib/types";
 
-export default function Hero({ settings }: { settings: SiteSettings | null }) {
+export default function Hero({
+  settings,
+  band,
+}: {
+  settings: SiteSettings | null;
+  band: BandMember[];
+}) {
+  const bgPhotos = band.filter((member) => member.photo_url).slice(0, 3);
+
   return (
     <section id="top" className="hero">
+      {bgPhotos.length > 0 && (
+        <div className="hero-bg-photos" aria-hidden="true">
+          {bgPhotos.map((member) => (
+            <div key={member.id} className="hero-bg-photo">
+              <Image
+                src={member.photo_url!}
+                alt=""
+                fill
+                sizes="34vw"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="hero-bg-gradient" aria-hidden="true" />
+      {bgPhotos[1] && (
+        <div className="hero-bg-photo-featured" aria-hidden="true">
+          <Image
+            src={bgPhotos[1].photo_url!}
+            alt=""
+            fill
+            sizes="34vw"
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
+          />
+        </div>
+      )}
       <div className="container hero-inner">
         {settings?.logo_url && (
           <Image
