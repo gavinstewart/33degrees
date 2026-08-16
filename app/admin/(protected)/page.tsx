@@ -6,6 +6,7 @@ const SECTIONS = [
   { href: "/admin/merch", label: "Merch" },
   { href: "/admin/news", label: "News" },
   { href: "/admin/band", label: "Band" },
+  { href: "/admin/discography", label: "Discography" },
   { href: "/admin/enquiries", label: "Enquiries" },
   { href: "/admin/settings", label: "Settings" },
 ];

@@ -48,6 +48,16 @@ export interface BandMember {
   created_at: string;
 }
 
+export interface DiscographyTrack {
+  id: string;
+  title: string;
+  release_year: number | null;
+  youtube_url: string | null;
+  spotify_url: string | null;
+  sort_order: number;
+  created_at: string;
+}
+
 export interface SiteSettings {
   id: 1;
   band_name: string;

@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type {
   BandMember,
+  DiscographyTrack,
   Enquiry,
   EnquirySettings,
   GalleryItem,
@@ -71,6 +72,15 @@ export async function getBandMembers(): Promise<BandMember[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("band_members")
+    .select("*")
+    .order("sort_order", { ascending: true });
+  return data ?? [];
+}
+
+export async function getDiscography(): Promise<DiscographyTrack[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("discography_tracks")
     .select("*")
     .order("sort_order", { ascending: true });
   return data ?? [];

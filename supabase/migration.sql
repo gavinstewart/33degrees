@@ -27,6 +27,17 @@ create table gallery_items (
   created_at   timestamptz not null default now()
 );
 
+-- ---------- discography_tracks ----------
+create table discography_tracks (
+  id             uuid primary key default gen_random_uuid(),
+  title          text not null,
+  release_year   integer,
+  youtube_url    text,
+  spotify_url    text,
+  sort_order     integer not null default 0,
+  created_at     timestamptz not null default now()
+);
+
 -- ---------- merch_items ----------
 create table merch_items (
   id           uuid primary key default gen_random_uuid(),
@@ -102,6 +113,7 @@ alter table gallery_items   enable row level security;
 alter table merch_items     enable row level security;
 alter table news_posts      enable row level security;
 alter table band_members    enable row level security;
+alter table discography_tracks enable row level security;
 alter table site_settings   enable row level security;
 alter table enquiries       enable row level security;
 alter table enquiry_settings enable row level security;
@@ -120,6 +132,9 @@ create policy "news_all_authenticated" on news_posts     for all    using (auth.
 
 create policy "band_select_anon"       on band_members   for select using (true);
 create policy "band_all_authenticated" on band_members   for all    using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
+
+create policy "discography_select_anon"       on discography_tracks for select using (true);
+create policy "discography_all_authenticated" on discography_tracks for all    using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 
 create policy "settings_select_anon"       on site_settings for select using (true);
 create policy "settings_all_authenticated" on site_settings for all    using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
@@ -183,6 +198,19 @@ insert into band_members (name, role, bio, photo_url, sort_order) values
   ('Shane Romeyn', 'Vocals, Guitar', null, '/seed/drifters-shaggy-sm.jpeg', 1),
   ('Chris Roberts', 'Drums', null, '/seed/drifters-chris-sm.jpeg', 2),
   ('Gavin Stewart', 'Bass', null, '/seed/gavin-stewart.jpg', 3);
+
+insert into discography_tracks (title, release_year, youtube_url, spotify_url, sort_order) values
+  ('Drinking On My Own', 2022, 'https://www.youtube.com/watch?v=gAdeX6k7niY', 'https://open.spotify.com/album/68l13HKG95tuifNTHxnRjr', 1),
+  ('Get Me Outta Here', 2021, 'https://www.youtube.com/watch?v=peqaRJm0iUw', 'https://open.spotify.com/track/3RvPfJXheRViWEAeeBchG8', 2),
+  ('Place In The Sun', 2021, 'https://www.youtube.com/watch?v=5UTnWdEfKP0', 'https://open.spotify.com/track/0NCOyWGrKylFqX3FFDBxe5', 3),
+  ('Hit The Ground Running', 2021, 'https://www.youtube.com/watch?v=WkcnJEmmefA', 'https://open.spotify.com/track/2erPZZqysf2x2zSzh8JAFj', 4),
+  ('Kudos', 2021, 'https://www.youtube.com/watch?v=ctOneaObL3g', 'https://open.spotify.com/track/1buJZx1NrskbBVOixh5jlD', 5),
+  ('The Key', 2021, 'https://www.youtube.com/watch?v=cIEqD6JyVjM', 'https://open.spotify.com/track/7yXX88jFDk8MLID6pf0XZD', 6),
+  ('Bleed', 2021, 'https://www.youtube.com/watch?v=-J_EJ3t9LYE', 'https://open.spotify.com/track/5oHbi5XZPjFhHE5hvKzfxr', 7),
+  ('Weapons', 2021, 'https://www.youtube.com/watch?v=UOU90KVr1xI', 'https://open.spotify.com/track/0s34IrCTa9dqsKObz2vivt', 8),
+  ('This Time', 2021, 'https://www.youtube.com/watch?v=rakXdusoqOA', 'https://open.spotify.com/track/1nTSX7LpNZ8giPspGcPwJf', 9),
+  ('No Illusions', 2021, 'https://www.youtube.com/watch?v=4kmJOynSpoA', 'https://open.spotify.com/track/2a2rkaDiafVFOmxL1WTW2b', 10),
+  ('Belong Here', 2021, 'https://www.youtube.com/watch?v=o-UzS0yNvrU', 'https://open.spotify.com/album/0rp1hrLdtPA1CGa8uHaXw5', 11);
 
 insert into gallery_items (kind, media_url, caption, sort_order) values
   ('photo', '/seed/photo-setlist.jpg', 'Setlist, live', 1),

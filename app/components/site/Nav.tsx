@@ -6,6 +6,7 @@ import type { SiteSettings } from "@/lib/types";
 
 const LINKS = [
   { href: "#shows", label: "Shows" },
+  { href: "#discography", label: "Music" },
   { href: "#gallery", label: "Gallery" },
   { href: "#news", label: "News" },
   { href: "#band", label: "Band" },
