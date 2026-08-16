@@ -25,6 +25,7 @@ export async function updateSiteSettings(formData: FormData) {
       instagram_url: strOrNull(formData, "instagram_url"),
       spotify_url: strOrNull(formData, "spotify_url"),
       youtube_url: strOrNull(formData, "youtube_url"),
+      linktree_url: strOrNull(formData, "linktree_url"),
       booking_email: strOrNull(formData, "booking_email"),
     })
     .eq("id", 1);

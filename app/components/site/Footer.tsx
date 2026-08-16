@@ -35,6 +35,13 @@ export default function Footer({ settings }: { settings: SiteSettings | null }) 
               </a>
             </li>
           )}
+          {settings?.linktree_url && (
+            <li>
+              <a href={settings.linktree_url} target="_blank" rel="noopener noreferrer">
+                Linktree
+              </a>
+            </li>
+          )}
           {settings?.booking_email && (
             <li>
               <a href={`mailto:${settings.booking_email}`}>Booking</a>

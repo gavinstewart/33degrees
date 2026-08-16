@@ -71,6 +71,7 @@ create table site_settings (
   instagram_url    text,
   spotify_url      text,
   youtube_url      text,
+  linktree_url     text,
   booking_email    text,
   constraint site_settings_singleton check (id = 1)
 );
@@ -130,7 +131,7 @@ create policy "media_authenticated_delete"
 -- Seed data
 -- ============================================================
 
-insert into site_settings (id, band_name, kicker, tagline, logo_url, facebook_url, instagram_url, spotify_url, youtube_url, booking_email)
+insert into site_settings (id, band_name, kicker, tagline, logo_url, facebook_url, instagram_url, spotify_url, youtube_url, linktree_url, booking_email)
 values (
   1,
   'Thirty Three Degrees',
@@ -141,6 +142,7 @@ values (
   'https://www.instagram.com/thirtythreedegrees.band/',
   'https://open.spotify.com/artist/2MwPAA2OIKMH3jrqWSAGod',
   'https://music.youtube.com/channel/UCHnKojV-stjE_ugEXCpHN_g',
+  'https://linktr.ee/thirtythreedegreesband',
   null
 )
 on conflict (id) do nothing;

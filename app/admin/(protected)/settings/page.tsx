@@ -52,6 +52,10 @@ export default async function AdminSettingsPage() {
             <input type="url" name="youtube_url" defaultValue={settings?.youtube_url ?? ""} />
           </label>
           <label>
+            Linktree URL
+            <input type="url" name="linktree_url" defaultValue={settings?.linktree_url ?? ""} />
+          </label>
+          <label>
             Booking email
             <input type="email" name="booking_email" defaultValue={settings?.booking_email ?? ""} />
           </label>

@@ -58,5 +58,6 @@ export interface SiteSettings {
   instagram_url: string | null;
   spotify_url: string | null;
   youtube_url: string | null;
+  linktree_url: string | null;
   booking_email: string | null;
 }
