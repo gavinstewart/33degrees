@@ -375,44 +375,6 @@ img {
 }
 
 /* ============================================================
-   Marquee
-   ============================================================ */
-.marquee {
-  background: var(--color-ink);
-  color: var(--color-sun-core);
-  overflow: hidden;
-  white-space: nowrap;
-  border-bottom: 3px solid var(--color-sun-core);
-}
-
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 24s linear infinite;
-}
-
-.marquee-track span {
-  font-family: var(--font-display), sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  padding: 14px 32px;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
-}
-
-/* ============================================================
    Shows
    ============================================================ */
 .shows-list {

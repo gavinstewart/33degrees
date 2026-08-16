@@ -1,6 +1,5 @@
 import Nav from "@/app/components/site/Nav";
 import Hero from "@/app/components/site/Hero";
-import Marquee from "@/app/components/site/Marquee";
 import ShowsList from "@/app/components/site/ShowsList";
 import Gallery from "@/app/components/site/Gallery";
 import News from "@/app/components/site/News";
@@ -32,7 +31,6 @@ export default async function HomePage() {
     <>
       <Nav settings={settings} />
       <Hero settings={settings} band={band} />
-      <Marquee settings={settings} />
       <ShowsList shows={shows} />
       <Gallery items={gallery} />
       <News posts={news} />
