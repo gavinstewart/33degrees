@@ -9,7 +9,7 @@ export default function Enquiry() {
   const [state, formAction, pending] = useActionState(submitEnquiry, initialState);
 
   return (
-    <section id="enquiries" className="section section--alt">
+    <section id="enquiries" className="section">
       <div className="container">
         <h2 className="section-heading">Get in Touch</h2>
         {state.status === "success" ? (

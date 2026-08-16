@@ -7,7 +7,7 @@ import { AddToCartButton, CartDrawer, CartToggle } from "@/app/components/site/M
 export default function Merch({ items }: { items: MerchItem[] }) {
   return (
     <CartProvider>
-      <section id="merch" className="section">
+      <section id="merch" className="section section--alt">
         <div className="container">
           <h2 className="section-heading">Merch</h2>
           {items.length === 0 ? (

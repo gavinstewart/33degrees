@@ -179,7 +179,7 @@ values (
   1,
   'Thirty Three Degrees',
   'CENTRAL COAST, NSW',
-  'Sun-baked three-piece rock, straight off the Coast.',
+  'Three players, one sound — tight rock straight off the Coast.',
   '/seed/logo-33d-lofi.jpg',
   'https://www.facebook.com/ThirtyThreeDegreesBand',
   'https://www.instagram.com/thirtythreedegrees.band/',

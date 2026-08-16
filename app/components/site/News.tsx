@@ -15,7 +15,7 @@ function renderWithLinks(text: string) {
 
 export default function News({ posts }: { posts: NewsPost[] }) {
   return (
-    <section id="news" className="section">
+    <section id="news" className="section section--alt">
       <div className="container">
         <h2 className="section-heading">News</h2>
         {posts.length === 0 ? (

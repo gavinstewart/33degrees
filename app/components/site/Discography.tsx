@@ -42,7 +42,7 @@ export default function Discography({ tracks }: { tracks: DiscographyTrack[] }) 
   const [playingId, setPlayingId] = useState<string | null>(null);
 
   return (
-    <section id="discography" className="section">
+    <section id="discography" className="section section--alt">
       <div className="container">
         <h2 className="section-heading">Discography</h2>
         {tracks.length === 0 ? (

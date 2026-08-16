@@ -37,7 +37,7 @@ export default function Gallery({ items }: { items: GalleryItem[] }) {
   const current = openIndex !== null ? items[openIndex] : null;
 
   return (
-    <section id="gallery" className="section section--alt">
+    <section id="gallery" className="section">
       <div className="container">
         <h2 className="section-heading">Gallery</h2>
         {items.length === 0 ? (

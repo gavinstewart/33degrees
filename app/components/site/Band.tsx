@@ -3,7 +3,7 @@ import type { BandMember } from "@/lib/types";
 
 export default function Band({ members }: { members: BandMember[] }) {
   return (
-    <section id="band" className="section section--alt">
+    <section id="band" className="section">
       <div className="container">
         <h2 className="section-heading">The Band</h2>
         {members.length === 0 ? (
