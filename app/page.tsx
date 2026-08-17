@@ -35,7 +35,7 @@ export default async function HomePage() {
     <>
       <Nav settings={settings} />
       <Hero settings={settings} band={band} />
-      <ShowsList shows={shows} />
+      <ShowsList shows={shows} bandName={settings?.band_name ?? "Thirty Three Degrees"} />
       <Discography tracks={discography} />
       <Gallery items={gallery} />
       <News posts={news} />

@@ -1,7 +1,14 @@
 import { formatLocalDate } from "@/lib/format";
 import type { Show } from "@/lib/types";
+import AddToCalendar from "@/app/components/site/AddToCalendar";
 
-export default function ShowsList({ shows }: { shows: Show[] }) {
+export default function ShowsList({
+  shows,
+  bandName,
+}: {
+  shows: Show[];
+  bandName: string;
+}) {
   return (
     <section id="shows" className="section">
       <div className="container">
@@ -22,16 +29,19 @@ export default function ShowsList({ shows }: { shows: Show[] }) {
                   </div>
                   {show.notes && <div className="show-notes">{show.notes}</div>}
                 </div>
-                {show.ticket_url && (
-                  <a
-                    href={show.ticket_url}
-                    className="btn btn--small"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Tickets
-                  </a>
-                )}
+                <div className="show-actions">
+                  {show.ticket_url && (
+                    <a
+                      href={show.ticket_url}
+                      className="btn btn--small"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Tickets
+                    </a>
+                  )}
+                  <AddToCalendar show={show} bandName={bandName} />
+                </div>
               </div>
             ))}
           </div>
