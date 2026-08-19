@@ -96,21 +96,23 @@ img {
   background: var(--color-bg-alt);
 }
 
-/* Etched "33°" watermark — the seed logo tiled faintly across every
-   content section below the Hero. Grayscale + brightened contrast
-   fades the gold sunburst square to near-white so multiply blending
-   makes it disappear into the paper, leaving only a faint impression
-   of the dark ink strokes. Tied to public/seed/logo-33d-lofi.jpg. */
+/* Etched "33°" watermark — a single faint impression of the seed logo
+   in the upper-right corner of every content section below the Hero,
+   not a tiled pattern. Grayscale + brightened contrast fades the gold
+   sunburst square to near-white so multiply blending makes it disappear
+   into the paper, leaving only a faint trace of the dark ink strokes.
+   Tied to public/seed/logo-33d-lofi.jpg. */
 .section::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image: url("/seed/logo-33d-lofi.jpg");
-  background-repeat: repeat;
-  background-size: 300px;
+  background-repeat: no-repeat;
+  background-size: 480px;
+  background-position: 105% 15%;
   filter: grayscale(1) brightness(1.7) contrast(1.4);
   mix-blend-mode: multiply;
-  opacity: 0.028;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
 }
